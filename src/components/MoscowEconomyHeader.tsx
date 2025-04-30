@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Search } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const MoscowEconomyHeader = () => {
   return (
@@ -8,13 +9,13 @@ const MoscowEconomyHeader = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <div className="text-xl font-bold text-blue-800 mr-8">
+            <Link to="/" className="text-xl font-bold text-blue-800 mr-8">
               Экономика Москвы
-            </div>
+            </Link>
             <nav className="hidden md:flex space-x-6">
               <a href="#" className="text-gray-600 hover:text-blue-800 font-medium">Новости</a>
               <a href="#" className="text-gray-600 hover:text-blue-800 font-medium">Аналитика</a>
-              <a href="#" className="text-blue-800 font-medium border-b-2 border-blue-800 pb-1">Тарифы</a>
+              <Link to="/tariff-digest" className="text-blue-800 font-medium border-b-2 border-blue-800 pb-1">Тарифы</Link>
               <a href="#" className="text-gray-600 hover:text-blue-800 font-medium">Инвестиции</a>
               <a href="#" className="text-gray-600 hover:text-blue-800 font-medium">О проекте</a>
             </nav>
@@ -30,9 +31,11 @@ const MoscowEconomyHeader = () => {
                 placeholder="Поиск..."
               />
             </div>
-            <Button size="sm" className="bg-blue-700 hover:bg-blue-800">
-              Войти
-            </Button>
+            <Link to="/admin">
+              <Button size="sm" className="bg-blue-700 hover:bg-blue-800">
+                Админ
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
