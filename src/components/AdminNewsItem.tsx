@@ -8,15 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-
-interface NewsItem {
-  id: number;
-  date: string;
-  title: string;
-  category: string;
-  description: string;
-  source: string;
-}
+import { NewsItem } from "@/types/news";
+import { categoryOptions } from "@/components/admin/NewsForm";
 
 interface AdminNewsItemProps {
   news: NewsItem;
@@ -58,8 +51,8 @@ const AdminNewsItem = ({ news, onDelete }: AdminNewsItemProps) => {
   };
 
   const handleSave = () => {
-    // In a real application, you would make an API call to update the news item
-    // For this example, we're just toggling the edit mode off
+    // В реальном приложении здесь был бы API-запрос для обновления новости
+    // Для этого примера мы просто выключаем режим редактирования
     setIsEditing(false);
   };
 
@@ -85,13 +78,9 @@ const AdminNewsItem = ({ news, onDelete }: AdminNewsItemProps) => {
                   <SelectValue placeholder="Выберите категорию" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Электроэнергетика">Электроэнергетика</SelectItem>
-                  <SelectItem value="ЖКХ">ЖКХ</SelectItem>
-                  <SelectItem value="Теплоснабжение">Теплоснабжение</SelectItem>
-                  <SelectItem value="Водоснабжение">Водоснабжение</SelectItem>
-                  <SelectItem value="Газоснабжение">Газоснабжение</SelectItem>
-                  <SelectItem value="Транспорт">Транспорт</SelectItem>
-                  <SelectItem value="Общие вопросы">Общие вопросы</SelectItem>
+                  {categoryOptions.map((category) => (
+                    <SelectItem key={category} value={category}>{category}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
